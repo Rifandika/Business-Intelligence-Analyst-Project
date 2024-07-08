@@ -1,0 +1,50 @@
+# Total keseluruhan
+select
+sum(total_sales) as total_keseluruhan
+from `final-task-bi-rakamin.Sales.Sales`;
+
+# Total keseluruhan sales berdasarkan kategori produk
+select 
+category_name,
+sum(total_sales) as total_keseluruhan_sales
+from `final-task-bi-rakamin.Sales.Sales` 
+group by category_name;
+
+# Total keseluruhan quantity berdasarkan kategori produk
+select 
+category_name,
+sum(order_qty) as total_keseluruhan_qty
+from `final-task-bi-rakamin.Sales.Sales` 
+group by category_name;
+
+# Total sales berdasarkan kota
+select 
+cust_city,
+sum(total_sales) as total_keseluruhan_sales
+from `final-task-bi-rakamin.Sales.Sales` 
+group by cust_city;
+
+# Total quantity berdasarkan kota
+select 
+cust_city,
+sum(order_qty) as total_keseluruhan_qty
+from `final-task-bi-rakamin.Sales.Sales` 
+group by cust_city;
+
+# Top 5 kategori produk berdasarkan sales
+select 
+category_name,
+sum(total_sales) as total_keseluruhan_sales
+from `final-task-bi-rakamin.Sales.Sales` 
+group by category_name
+order by total_keseluruhan_sales desc
+limit 5;
+
+# Top 5 kategori produk berdasarkan quantity
+select 
+category_name,
+sum(order_qty) as total_keseluruhan_qty
+from `final-task-bi-rakamin.Sales.Sales` 
+group by category_name
+order by total_keseluruhan_qty desc
+limit 5;
